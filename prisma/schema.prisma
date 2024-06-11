@@ -1,0 +1,181 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ROLE {
+  USER
+  ORG
+}
+
+enum STATE {
+  AM
+  PA
+  RR
+  AP
+  AC
+  RO
+  TO
+  MA
+  PI
+  CE
+  RN
+  PB
+  PE
+  AL
+  SE
+  BA
+  MG
+  ES
+  RJ
+  SP
+  PR
+  SC
+  RS
+  MS
+  MT
+  GO
+  DF
+}
+
+model Org {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  role         ROLE
+  whatsapp     String
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime? @map("updated_at")
+
+  cep          String
+  number       String
+  street       String
+  neighborhood String
+  city         String
+  state        STATE
+
+  pet Pet[]
+
+  @@map("orgs")
+}
+
+enum PET_MAIN_CHARCTERISTICS {
+  Leal
+  brincalhao
+  necessita_de_exercicio_regular
+  Independente
+  limpo
+  pode_ser_afetuoso
+  tamanho_medio
+  Relativamente_facil_de_cuidar
+  silencioso
+  Pode_ser_cantante
+  requer_interacao
+  tamanho_pequeno
+  Pequeno
+  atividade_noturna
+  vive_em_gaiolas
+  requer_rodinha_para_exercicio
+  Sociavel
+  requer_ambiente_especifico
+  Longa_expectativa_de_vida
+  facil_de_cuidar
+  Requer_habitat_especifico
+  venenoso
+  Ativo
+  curioso
+  necessita_de_espaco_para_brincar
+  noturno
+  pode_ser_treinado
+  Variedade_de_especies
+  dieta_especifica
+  Diversidade_de_especies
+  nao_venenoso
+  terrestre
+  pode_ser_treinado_para_falar
+  diurno
+  Inteligente
+  requer_interacao_social
+  requer_estimulacao
+  Cantante
+  relativamente_facil_de_cuidar
+  ativo
+  necessita_de_ambiente_com_espaco_para_cavar
+  Aquatico
+  sensivel_a_qualidade_da_agua
+  Silenciosa
+}
+
+enum PET_COLOR {
+  preto
+  marrom
+  branco
+  cinza
+  amarelo
+  listrado
+  laranja
+  vermelho
+  verde
+  azul
+  dourado
+}
+
+enum PET_TYPE {
+  Cachorro
+  Gato
+  Peixe
+  Passaro
+  Hamster
+  Coelho
+  Tartaruga
+  Porquinho_da_india
+  Cobra
+  Furao
+  Chinchila
+  Rato
+  Lagarto
+  Ourico
+  Aranha
+  Sapo
+  Periquito
+  Papagaio
+  Canario
+  Gerbil
+  Axolote
+  Tarantula
+}
+
+model Pet {
+  id                  String                    @id @default(uuid())
+  orgId               String                    @map("org_id")
+  name                String
+  mainCharacteristics PET_MAIN_CHARCTERISTICS[] @map("main_characteristics")
+  color               PET_COLOR
+  type                PET_TYPE
+  isAdoptable         Boolean                   @map("is_adoptable")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime?
+
+  cep          String
+  number       String
+  street       String
+  neighborhood String
+  city         String
+  state        STATE
+
+  org Org @relation(fields: [orgId], references: [id])
+
+  @@map("pets")
+}
