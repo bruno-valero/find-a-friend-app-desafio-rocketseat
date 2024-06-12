@@ -39,7 +39,7 @@ export function makePet(override?: Partial<Pet>) {
     cep: faker.number.int({ min: 10000000, max: 99999999 }).toString(),
     city: faker.location.city(),
     neighborhood: faker.lorem.sentence(2),
-    number: faker.number.int({ min: 0, max: 10000 }),
+    number: String(faker.number.int({ min: 0, max: 10000 })),
     state: states[Math.floor(Math.random() * states.length)],
     street: faker.location.street(),
   })

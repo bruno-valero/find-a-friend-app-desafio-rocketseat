@@ -60,7 +60,6 @@ describe('find pet use case', () => {
     )
 
     const sutResp = await sut.useCase.execute({
-      orgId: orgs[0].id.value,
       petId: pets[0].id.value,
     })
 

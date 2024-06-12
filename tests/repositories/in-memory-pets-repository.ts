@@ -14,10 +14,10 @@ export class InMemoryPetsRepository implements PetsRepository {
     return org
   }
 
-  async findById(id: string, orgId: string): Promise<Pet | null> {
+  async findById(id: string, orgId?: string): Promise<Pet | null> {
     return (
-      this.items.find(
-        (item) => item.id.value === id && item.orgId.value === orgId,
+      this.items.find((item) =>
+        item.id.value === id && orgId ? item.orgId.value === orgId : true,
       ) ?? null
     )
   }

@@ -3,21 +3,22 @@ import { FindPetUseCase } from '@/domain/find-a-friend/application/use-cases/pet
 import { PrismaPetsRepository } from '@/infra/database/reposities/prisma-pet-repository'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
+import { PetPresenter } from '../../presenters/pet-presenter'
 
 export async function findPetController(
   req: FastifyRequest,
   res: FastifyReply,
 ) {
   const paramsSchema = z.object({
-    petId: z.string(),
+    id: z.string(),
   })
 
-  const params = paramsSchema.parse(req.params)
+  const { id: petId } = paramsSchema.parse(req.params)
 
   const petsRepository = new PrismaPetsRepository()
   const useCase = new FindPetUseCase(petsRepository)
 
-  const resp = await useCase.execute({ ...params, orgId: req.user.sub })
+  const resp = await useCase.execute({ petId })
 
   if (resp.isLeft()) {
     const error = resp.value
@@ -29,7 +30,7 @@ export async function findPetController(
 
   if (resp.isRight()) {
     const { pet } = resp.value
-    res.status(200).send({ pet })
+    res.status(200).send({ pet: PetPresenter.basic(pet) })
   }
 
   res.status(500).send({ message: 'Internal server error.' })

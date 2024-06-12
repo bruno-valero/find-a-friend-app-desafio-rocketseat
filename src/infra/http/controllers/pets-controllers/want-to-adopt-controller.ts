@@ -9,22 +9,17 @@ export async function wantToAdoptController(
   req: FastifyRequest,
   res: FastifyReply,
 ) {
-  const bodySchema = z.object({
-    orgId: z.string().uuid(),
-  })
-
   const paramsSchema = z.object({
-    petId: z.string(),
+    id: z.string(),
   })
 
-  const params = paramsSchema.parse(req.params)
-  const body = bodySchema.parse(req.body)
+  const { id: petId } = paramsSchema.parse(req.params)
 
   const petsRepository = new PrismaPetsRepository()
   const orgsRepository = new PrismaOrgsRepository()
   const useCase = new WhantToAdoptUseCase(petsRepository, orgsRepository)
 
-  const resp = await useCase.execute({ ...body, ...params })
+  const resp = await useCase.execute({ petId })
 
   if (resp.isLeft()) {
     const error = resp.value
