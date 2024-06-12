@@ -11,7 +11,7 @@ export type PetFilters = {
 
 export interface PetsRepository {
   create(pet: Pet): Promise<Pet>
-  findById(id: string, orgId: string): Promise<Pet | null>
+  findById(id: string, orgId?: string): Promise<Pet | null>
   findMany(
     filters: PetFilters,
     orgId?: string,

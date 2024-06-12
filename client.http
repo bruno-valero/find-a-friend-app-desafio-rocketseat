@@ -56,45 +56,14 @@ Authorization: Bearer {{authToken}}
 GET {{baseUrl}}/pets?city=the daily planet&mainCharacteristics=diurno,limpo&color=preto
 
 
-
 ###
 
-# @name update_meal
-PUT {{baseUrl}}/meals/49715768-da2f-49f5-9ff9-87a3d28ebcce
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
-
-{
-    "name": "meal test",
-    "description": "testing",
-    "isInDiet": false,
-    "dateTime": "2024-06-10T11:09:30.535Z"
-}
-
-
-
-### 
-
-# @name delete_meal
-DELETE {{baseUrl}}/meals/0e42f8d8-33c2-4490-856e-fa59fd25000e
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
-
-
+# @name find_pet
+GET {{baseUrl}}/pets/b10f8cc7-b64c-4a85-a4b2-52d690b9417a
 
 
 ###
 
-# @name find_meal_by_id
-GET {{baseUrl}}/meals/49715768-da2f-49f5-9ff9-87a3d28ebcce
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
-
-
-###
-
-# @name get_user_metrics
-GET {{baseUrl}}/meals/metrics
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
+# @name want_to_adopt_pet
+GET {{baseUrl}}/pets/adopt/b10f8cc7-b64c-4a85-a4b2-52d690b9417a
 

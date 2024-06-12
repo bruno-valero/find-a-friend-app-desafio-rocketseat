@@ -22,11 +22,15 @@ export class PrismaPetsRepository implements PetsRepository {
     return mappedPet
   }
 
-  async findById(id: string, orgId: string): Promise<Pet | null> {
+  async findById(id: string, orgId?: string): Promise<Pet | null> {
     const PrismaPet = await prisma.pet.findUnique({
       where: {
         id,
-        orgId,
+        AND: [
+          {
+            orgId,
+          },
+        ],
       },
     })
 

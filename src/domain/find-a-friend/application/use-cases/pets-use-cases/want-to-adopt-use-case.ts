@@ -5,7 +5,6 @@ import { OrgsRepository } from '../../repositories/orgs-repository'
 import { UnauthorizedError } from '@/core/errors/errors/unauthorized-error'
 
 export interface WhantToAdoptUseCaseRequest {
-  orgId: string
   petId: string
 }
 
@@ -21,14 +20,13 @@ export class WhantToAdoptUseCase {
   ) {}
 
   async execute({
-    orgId,
     petId,
   }: WhantToAdoptUseCaseRequest): Promise<WhantToAdoptUseCaseResponse> {
-    const pet = await this.petsRepository.findById(petId, orgId)
+    const pet = await this.petsRepository.findById(petId)
     if (!pet) return left(new ResourceNotFoundError())
     if (!pet.characteristics.isAdoptable) return left(new UnauthorizedError())
 
-    const org = await this.orgsRepository.findById(orgId)
+    const org = await this.orgsRepository.findById(pet.orgId.value)
     if (!org) return left(new ResourceNotFoundError())
 
     const whatsapp = org.whatsapp.format

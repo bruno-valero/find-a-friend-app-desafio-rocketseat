@@ -8,6 +8,7 @@ const envSchema = z.object({
       'postgresql://postgres:docker@localhost:5432/daily-diet?schema=public',
     ),
   PORT: z.string().optional().default('3000').pipe(z.coerce.number()),
+  NODE_ENV: z.enum(['dev', 'test', 'prod']).default('prod'),
 })
 
 const _env = envSchema.safeParse(process.env)

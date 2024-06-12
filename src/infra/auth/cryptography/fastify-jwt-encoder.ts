@@ -1,4 +1,4 @@
-import { Encoder } from '@/domain/application/cryptography/encoder'
+import { Encoder } from '@/domain/find-a-friend/application/cryptography/encoder'
 import { FastifyReply } from 'fastify'
 
 export class FastifyJwtEncoder implements Encoder {
