@@ -8,7 +8,7 @@ Para rodar este server em desenvolvimento, certifique-se de ter as seguintes dep
 
 - [git](https://git-scm.com/downloads) - permite realizar versionamento de código e a comunicação com o github.
 
-- [docker](https://docs.docker.com/get-docker/) - permite a conteinerização, que é criar e disponibilizar **micro máquinas virtuais com somente o necessário para que o serviço escolhido funcione**. Neste caso, o [docker](https://docs.docker.com/get-docker/) será utilizado para subir o banco de dados postgreSQL em desenvolvimento.
+- [docker](https://docs.docker.com/get-docker/) - permite a conteinerização, que é criar e disponibilizar **micro máquinas virtuais com somente os recursos necessários para que o serviço escolhido funcione**. Neste caso, o [docker](https://docs.docker.com/get-docker/) será utilizado para subir o banco de dados postgreSQL em desenvolvimento.
 
 - [nodeJS](https://nodejs.org/en) - permite executar javaScript em um ambiente de servidor
 
@@ -93,9 +93,9 @@ A seguir estarão disponíveis as informações relacionadas ao desenvolvimento 
 - [x] Os dados deverão ser persistidos num banco de dados postgreSQL
 - [x] O Banco de dados em desenvolvimento deve ser usado através de um container do Docker
 - [x] Devem haver testes unitários e testes e2e para validar os requisitos e as regras de negócio
-- [ ] Deve ser implementado o CI (Continuous Integration)
-- [ ] CI - ao realizar um **push** para o github, todos os tests unitários devem ser executados
-- [ ] CI - ao realizar um **pull request** para o github, todos os tests e2e devem ser executados
+- [x] Deve ser implementado o CI (Continuous Integration)
+- [x] CI - ao realizar um **push** para o github, todos os tests unitários devem ser executados
+- [x] CI - ao realizar um **pull request** para o github, todos os tests e2e devem ser executados
 - [x] O projeto dev seguir a metodologia DDD (Domain-Driven Design)
 
 ### Metodologia Domain-Driven Design
