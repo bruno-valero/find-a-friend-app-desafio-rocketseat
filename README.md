@@ -2,6 +2,8 @@
 
 Nesse desafio desenvolveremos uma API para a adoção de animais, a FindAFriend API, utilizando SOLID e testes.
 
+Confira o enunciado do desafio no [Notion](https://efficient-sloth-d85.notion.site/Desafio-03-0b927eb32dbd4f21ab40224ffdf6cf19).
+
 ### Setup em desenvolvimento
 
 Para rodar este server em desenvolvimento, certifique-se de ter as seguintes dependências instaladas no seu computador:
