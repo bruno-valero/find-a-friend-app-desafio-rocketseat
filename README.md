@@ -40,6 +40,18 @@ Certifique-se que o docker está ativo, então execute o comando
 npm run dev:new-setup
 ```
 
+Observe os logs que aparacerão no terminal. Quando aparecer `app running on 3000`, você já pode começar a realizar as requisições http
+
+#### Ver alterações no postgreSQL
+
+Quando você começar a fazer as requisições, novos dados serão inseridos, trocados ou retirados do banco de dados. para consultar essas mudanças, abra outro terminal dentro da pasta do projeto, ou seja, dentro de `caminho/ate/find-a-friend-app-desafio-rocketseat`. Quando o terminal estiver aberto dentro desta pasta, execute o comando:
+
+```bash
+npm run db
+```
+
+O comando acima abrirá uma janela no eu navegador, mostrando as tabela do banco de dados e seu conteúdo.
+
 #### Futuros testes na mesma pasta
 
 Agora que você já executou `npm run dev:new-setup`, caso vá rodar o servidor futuramente na mesma pasta, não há necessidade de usar o mesmo comando. Em vez disso execute:
