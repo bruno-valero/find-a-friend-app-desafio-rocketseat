@@ -19,50 +19,40 @@ Após verificar que todos os requisitos acima estão disponíveis, faça o clone
 Primeiro inicie o git
 
 ```bash
-
 git init
-
 ```
 
 Clone o repositório
 
 ```bash
-
 git clone https://github.com/bruno-valero/find-a-friend-app-desafio-rocketseat
-
 ```
 
 Entre na pasta do projeto
 
 ```bash
-
 cd find-a-friend-app-desafio-rocketseat
-
 ```
 
 Certifique-se que o docker está ativo, então execute o comando
 
 ```bash
-
 npm run dev:new-setup
-
 ```
 
 #### Futuros testes na mesma pasta
 
-Agora que você já rodou `npm run dev:new-setup`, caso vá rodar o servidor futuramente na mesma pasta, não há necessidade de executar o mesmo comando. Em vez disso execute:
+Agora que você já executou `npm run dev:new-setup`, caso vá rodar o servidor futuramente na mesma pasta, não há necessidade de usar o mesmo comando. Em vez disso execute:
 
 ```bash
-
 npm run dev
-
 ```
 
 ### Fazendo requisições http
 
-Se você tiver a extensão do vscode **REST Client**, pode usar o arquivo `./client.http`, ele já tem todas as possíveis rotas disponíveis. Basta trocar os dados que serão enviados para testar.
+Se você tiver a extensão do vscode **REST Client**, pode usar o arquivo [`./client.http`](https://github.com/bruno-valero/find-a-friend-app-desafio-rocketseat/blob/main/client.http), ele já tem todas as possíveis rotas disponíveis. Basta trocar os dados que serão enviados para testar.
 
-Ou você pode usar om programa como o [Insomnia](https://insomnia.rest/download) que é um aplicativo de desktop multiplataforma que permite fazer solicitações HTTP e testar APIs.
+Ou você pode usar um programa como o [Insomnia](https://insomnia.rest/download), um aplicativo desktop multiplataforma que permite fazer solicitações HTTP e testar APIs.
 
 ## Construção do Projeto
 
